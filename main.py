@@ -25,7 +25,7 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    corrected_content = re.sub(r'(?i)\bespresso\b', 'expresso', message.content)
+    corrected_content = re.sub(r'(?i)\bespresso\b', lambda match: match.group().capitalize(), message.content)
     if corrected_content != message.content:
         await message.channel.send(f'{message.author} meant to say: {corrected_content}')
 
